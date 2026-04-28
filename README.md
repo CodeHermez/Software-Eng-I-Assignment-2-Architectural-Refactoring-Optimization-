@@ -3,14 +3,14 @@ This project involved the comprehensive architectural analysis and refactoring o
 
 > **An enterprise-grade architectural analysis and refactoring project demonstrating the transition from a tightly coupled procedural monolith to a highly cohesive, event-driven, domain-centric application.**
 
-## 📖 Project Overview
+## Project Overview
 This project involves the comprehensive audit, redesign, and empirical benchmarking of a Java-based academic submission and peer-review system. 
 
 The primary objective was to identify severe violations of software engineering principles (GRASP and S.O.L.I.D.) within a baseline application and refactor it into a modular, scalable architecture. The resulting optimized system achieved a **~77.5% reduction in computational latency** and a **~44% reduction in method call overhead**.
 
 ---
 
-## 🛑 The Problem: Baseline Technical Debt
+## The Problem: Baseline Technical Debt
 The original legacy system (Task 1) suffered from severe anti-patterns and bottlenecks:
 * **"God Object" Anti-patterns:** The `SubmissionController` illegally orchestrated backend domain logic and evaluation lifecycles, violating High Cohesion.
 * **The N+1 Query Problem:** The application memory was used to filter massive datasets (`checkWorkload`, `filterConflicts`) rather than leveraging native database persistence layer queries.
@@ -19,7 +19,7 @@ The original legacy system (Task 1) suffered from severe anti-patterns and bottl
 
 ---
 
-## 🏗️ Architectural Solutions Implemented
+## Architectural Solutions Implemented
 The system was completely re-engineered using modern enterprise design patterns:
 
 ### 1. The Repository Pattern (Information Expert)
@@ -36,7 +36,7 @@ Streamlined system actions using a centralized `NotificationService` that respon
 
 ---
 
-## 📊 Empirical Benchmarks (Before vs. After)
+## Empirical Benchmarks (Before vs. After)
 The architectural refactoring was verified using a custom `MetricTracker`, benchmarking 10,000 execution lifecycles to prove empirical impact:
 
 | Metric | Task 1 (Baseline) | Task 5 (Optimised) | Empirical Impact |
@@ -48,7 +48,7 @@ The architectural refactoring was verified using a custom `MetricTracker`, bench
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 ├── task1-baseline/           # The original, flawed procedural implementation
