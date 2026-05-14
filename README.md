@@ -33,7 +33,7 @@ The architectural refactoring was verified using a custom `MetricTracker`, bench
 | **Total Method Invocations (1 run)** | 27 Calls | 15 Calls | **44% computational overhead difference** |
 | **Execution Latency (1k runs)** | 9060.01 ms | 2041.98 ms | **77.5% execution speedup** |
 ---
-## Compilation & Exection
+## Compilation & Execution
 ---
 ### 1. Verify Java Installation
 You must have the Java Development Kit (JDK) installed before compiling or running code. Check your installation by running:
