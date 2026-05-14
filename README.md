@@ -13,6 +13,17 @@ This project demonstrates the complete end-to-end refactoring of an "Intelligent
 **Simulated Asynchrony:** To benchmark the decoupled evaluation lifecycle without requiring real human reviewers to log in days later, the system utilizes a mock test stub (`simulateScoreSubmission()`). This programmatically replicates the passage of time and asynchronous data entry.
 
 ---
+### Decoupled Execution Flow
+#### Phase 1: The Submission Sequence
+The boundary controller now handles validation and assignment, delegating data persistence to the Information Expert (`SubmissionDB` and `ReviewerDB`) before terminating its lifecycle.
+
+![Submission Sequence Diagram](task4-architecture/submission-sequence.png)
+
+#### Phase 2: The Evaluation Sequence
+Triggered asynchronously by the `SystemScheduler`, this phase uses the `DMS` (Decision Management System) to evaluate scores and dispatches an outcome to the `NotificationService`.
+
+![Evaluation Sequence Diagram](task4-architecture/evaluation-sequence.png)
+---
 
 ## Benchmarks (Before vs. After)
 The architectural refactoring was verified using a custom `MetricTracker`, benchmarking 1000 execution impact:
