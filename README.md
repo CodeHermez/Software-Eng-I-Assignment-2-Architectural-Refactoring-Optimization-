@@ -32,4 +32,44 @@ The architectural refactoring was verified using a custom `MetricTracker`, bench
 | :--- | :--- | :--- | :--- |
 | **Total Method Invocations (1 run)** | 27 Calls | 15 Calls | **44% computational overhead difference** |
 | **Execution Latency (1k runs)** | 9060.01 ms | 2041.98 ms | **77.5% execution speedup** |
+---
+## Compilation & Exection
+---
+### 1. Verify Java Installation
+You must have the Java Development Kit (JDK) installed before compiling or running code. Check your installation by running:
+```bash
+java -version
+```
+* **Success:** The terminal will display your installed Java version number.
+* **Failure:** A "command not found" error means you must install the JDK first.
 
+### 2. Navigate to Your Project Directory
+Your terminal must look inside the specific folder where the source files live (tasks 1 & 5). Use the Change Directory command:
+```bash
+cd task1-baseline
+```
+* **Shortcut:** Type `cd ` and drag-and-drop the project folder directly into the terminal window.
+* **Verification:** Type `ls` (Powershell/Linux/Mac) or `dir` (Windows) to ensure your `.java` files are visible.
+
+### 3. Compile the Source Code
+Convert your human-readable Java files into machine-readable bytecode:
+```bash
+javac *.java
+```
+* **Bulk Compile:** Use `javac *.java` to compile every Java file in the folder at the same time.
+* **Result:** This process generates matching `.class` files in your directory.
+
+### 4. Run the Application
+Execute the compiled bytecode using the Java Virtual Machine (JVM):
+```bash
+java App
+```
+* **Crucial:** Never include the `.class` file extension in this command.
+* **Requirement:** The class you App is the only one that contains a `public static void main(String[] args)` method.
+
+### 5. BenchMark Execution
+Uncomment the last lines in both the task's main methods to run the benchmarks:
+```java
+//UNCOMMNET BENCHMARK CODE BELOW TO RUN IT!
+// benchMark(researcher, systemUI, myData);
+```
