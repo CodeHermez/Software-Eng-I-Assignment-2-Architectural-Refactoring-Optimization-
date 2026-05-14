@@ -1,6 +1,14 @@
 import java.util.*;
 public class App {
+    /**
+     * This application orchestrates self-documenting classes and self-explanatory functions, 
+     * eliminating the need for inline comments through descriptive naming.So where there 
+     * is a need and there maybe confusion in the interpretation of the function or class its further 
+     * elaborated via comments.
+     */
+
     public static void main(String[] args) {
+        // creation and instanctiation of objects involved in system 
         SubmissionDB submissionDB = new SubmissionDB();
         EvaluationDB evaluationDB = new EvaluationDB();
         ReviewerDB reviewerDB = new ReviewerDB(evaluationDB); // pass evalDB so reviewers can score
@@ -11,11 +19,19 @@ public class App {
         SubmissionController controller = new 
         SubmissionController(new Validator(), reviewerDB, submissionDB);
         UI systemUI = new UI(controller);
-        SystemS systemScheduler = new SystemS(evaluationManager);
+        /**
+        *in the sequence diagram this object(systemScheduler) is called System indicating the system schedular
+        *the system schedular that would be initiated gives contraints that would cause it to be triggered.
+        *and in this instance its used for triggering the evaulation processes since these processes are separated 
+        *now for more modularity.
+        */
+        //NB: using "System" as an object name or class name was not achievable because its a already a final class defined in java.lang.
+        SystemS systemScheduler = new SystemS(evaluationManager); 
         Researcher researcher = new Researcher();
         Artefact myData = new Artefact();
         
         System.out.println("\nPHASE A: Submission");
+        //function initiating the submission process
         researcher.interactWithSystem(systemUI, myData);
         List<Reviewer> assignedReviewers = reviewerDB.getMockReviewers(); 
         for(Reviewer reviewer: assignedReviewers){
@@ -26,9 +42,10 @@ public class App {
 
         System.out.println("\nTotal Method Calls (Optimised): " + MetricTracker.totalMethodCalls);
         System.out.println();
-        benchMarch(researcher, systemScheduler, systemUI, myData);
+        //UNCOMMNET BENCHMARK CODE BELOW TO RUN IT!
+        // benchMark(researcher, systemScheduler, systemUI, myData);
     }
-     public static void benchMarch(Researcher researcher, SystemS systemScheduler, UI systemUI, Artefact myData){
+     public static void benchMark(Researcher researcher, SystemS systemScheduler, UI systemUI, Artefact myData){
         long st = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             researcher.interactWithSystem(systemUI, myData);
